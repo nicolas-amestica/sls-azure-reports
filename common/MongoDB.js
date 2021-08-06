@@ -1,3 +1,4 @@
+'use strict';
 const { MongoClient } = require('mongodb');
 
 /* NOMBRE DE BASE DE DATOS. */
@@ -11,7 +12,10 @@ const client = new MongoClient(url, {
   useUnifiedTopology: true
 });
 
-/* EXPORTAR MODULO DE CONEXIÓN. */
+/**
+ * Función que expone el establecimiento de la conexión a la base de datos.
+ * @return {[Obj]}: Respuesta de la función con la información procesada en la function, incluye respuesta satisfactoria o fallo.
+ */
 module.exports = async () => {
 
   try {

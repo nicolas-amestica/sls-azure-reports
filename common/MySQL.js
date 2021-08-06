@@ -1,3 +1,6 @@
+'use strict';
+
+/** VARIABLE QUE CONFIGURA LAS VARIABLES DE CONEXIÓN. */
 let configFinanzas = {
     server: process.env.DB_HOST_FINANCES_HOST,
     database: process.env.DB_HOST_FINANCES_DBNAME,
@@ -11,6 +14,7 @@ let configFinanzas = {
     }
 };
 
+/** VARIABLE QUE CONFIGURA LAS VARIABLES DE CONEXIÓN. */
 let configUsuarios = {
     server: process.env.DB_HOST_USERS_HOST,
     database: process.env.DB_HOST_USERS_DBNAME,
@@ -24,6 +28,10 @@ let configUsuarios = {
     }
 };
 
+/**
+ * Función que valida que todos los campos de la conexión existan.
+ * @return {String}: Respuesta de la función con la información procesada en la function, incluye respuesta satisfactoria o fallo.
+ */
 module.exports.validarConexionFinanzas = async () => {
 
     let message = [];
@@ -44,6 +52,10 @@ module.exports.validarConexionFinanzas = async () => {
 
 }
 
+/**
+ * Función que valida que todos los campos de la conexión existan.
+ * @return {String}: Respuesta de la función con la información procesada en la function, incluye respuesta satisfactoria o fallo.
+ */
 module.exports.validarConexionUsuarios = async () => {
 
     let message = [];
@@ -64,5 +76,6 @@ module.exports.validarConexionUsuarios = async () => {
 
 }
 
+/** EXPONER VARIABLES DE CONFIGURACIÓN DE LA CONEXIÓN A LA BASE DE DATOS. */
 exports.configUsuarios = configUsuarios;
 exports.configFinanzas = configFinanzas;
