@@ -14,13 +14,12 @@ module.exports.getDataFoliosPendientes = async () => {
 
         /** CREAR CONEXIÓN A BASE DE DATOS MYSQL. */
         let valida = await MySQL.validarConexionFinanzas();
-        if (valida.length > 0) return { status: 400, body: { error: 'No se pudo seguir validar la conexión a finanzas.' }, error };
+        if (valida.length > 0) return { status: 400, body: { error: 'No se pudo validar la conexión a finanzas.' }, error };
         let pool = await sql.connect(MySQL.configFinanzas);
 
         /** QUERY. */
         const query = `
             SELECT
-                TOP 10
                 sl.id,
                 sl.closeout_number,
                 sl.term,
