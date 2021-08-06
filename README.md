@@ -7,7 +7,7 @@
 
 ##### Contiene el siguiente endpoint:
 
-- GenerateQuadratures: Generar la cuadratura con identificador "folio".
+- GenerateQuadrature: Generar la cuadratura con identificador "folio".
 
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
@@ -22,7 +22,7 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
     }
 ```
 
-- GenerateCompleteQuadratures: Generar la cuadratura con identificar "folio" y "CompanieId".
+- GenerateCompleteQuadrature: Generar la cuadratura con identificar "folio" y "CompanieId".
 
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
@@ -36,7 +36,7 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
     }
 ```
 
-- ValidateFolios: Generar la cuadratura de folios liquidados de finanzas con folios con estado distinto a delivered de orders. Solo funciona para país Chile.
+- FoliosDescuadrados: Generar la cuadratura de folios liquidados de finanzas con folios con estado distinto a delivered de orders. Solo funciona para país Chile.
 
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
@@ -48,6 +48,10 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
         ] (Arrelgo de string de folios)
     }
 ```
+
+- get_final_pending_liquidation_report: Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
+
+El endpoint no contiene body:
 #### Todos los endpoint no tienen HEADER (de momento).
 
 # INSTALACIÓN
