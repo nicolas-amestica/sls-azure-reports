@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "liquidation/reports/get_final_pending_liquidation_report"
+      "route": "finances/liquidation/reports/get_final_pending_liquidation_report"
     },
     {
       "type": "http",

@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "reports/quadrature/GenerateCompleteQuadratures"
+      "route": "logistics/orders/quadrature/GenerateCompleteQuadrature"
     },
     {
       "type": "http",
