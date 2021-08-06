@@ -51,7 +51,9 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 
 - get_final_pending_liquidation_report: Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
 
+```sh
 El endpoint no contiene body:
+```
 #### Todos los endpoint no tienen HEADER (de momento).
 
 # INSTALACIÓN
