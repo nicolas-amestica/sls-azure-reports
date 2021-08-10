@@ -22,50 +22,26 @@ module.exports.getDataFoliosPendientes = async () => {
         /** QUERY. */
         const query = `
             SELECT
-                TOP 50
-                sl.id,
-                sl.closeout_number,
-                sl.term,
-                sl.rut,
-                sl.quantity,
-                sl.sku,
-                REPLACE(REPLACE(REPLACE(TRIM(REPLACE(sk.seller_sku, '''', '')), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS seller_sku,
-                REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(sk.product_name, '''', ''), ';', ' '), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS description,
-                sl.percentage,
-                sl.gross_sale_income,
-                sl.IVA_gross_income,
-                sl.net_sale_income,
-                sl.commission_value,
-                sl.net_sale_to_bill,
-                sl.IVA_to_bill,
-                sl.gross_income_to_bill,
-                sl.folio,
-                CONVERT(VARCHAR, sl.createdAt, 120) AS createdAt,
-                CONVERT(VARCHAR, sl.updatedAt, 120) AS updatedAt,
-                CONVERT(VARCHAR, sl.date_of_sale, 120) AS date_of_sale,
-                CONVERT(VARCHAR, sl.reception_time, 120) AS reception_time,
-                sl.category,
-                sl.origin,
-                sl.fulfillment_type,
-                sl.purchase_order,
-                sl.sales_commission,
-                sl.discount_value,
-                sl.discounted_commission,
-                sl.total_commission,
-                REPLACE(REPLACE(REPLACE(REPLACE(sl.ticket_number, ';', ' '), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS ticket_number,
-                sl.international,
-                sl.business,
-                sl.country
+                REPLACE(REPLACE(REPLACE(id, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS id,
+                REPLACE(REPLACE(REPLACE(number, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS number,
+                REPLACE(REPLACE(REPLACE(term, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS term,
+                REPLACE(REPLACE(REPLACE(rut, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS rut,
+                REPLACE(REPLACE(REPLACE(name, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS name,
+                REPLACE(REPLACE(REPLACE(CAST(CAST(createdAt AS date) AS varchar), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS createdAt,
+                REPLACE(REPLACE(REPLACE(CAST(CAST(updatedAt AS date) AS varchar), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS updatedAt,
+                gross_income_to_bill,
+                commission,
+                gross_sale_income,
+                REPLACE(REPLACE(REPLACE(origin, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS origin,
+                REPLACE(REPLACE(REPLACE(CAST(CAST(term_date AS date) AS varchar), CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS term_date,
+                REPLACE(REPLACE(REPLACE(business, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS business,
+                REPLACE(REPLACE(REPLACE(country, CHAR(9), ''), CHAR(10), ''), CHAR(13), '') AS country
             FROM
-                sales sl
-                LEFT JOIN skus sk ON sl.sku = sk.sku 
+                closeouts
             WHERE
-                sl.origin = 'SVL'
-                AND sl.folio NOT IN ('0','-1','-2','-3','-4','-5','-6','-7','-8','-9','-10','-11')
-                AND sl.quantity > 0
-                AND (sl.closeout_number = 0 OR sl.closeout_number IS NULL)
-                AND sl.international = 0
-        `;
+                term = '${dateFormat(new Date(), "yyyy-mm-dd")}'`
+                // term = '2021-08-06'`;
+        ;
 
         /** EJECUCIÓN DE QUERY. */
         const data = await pool.request().query(query);

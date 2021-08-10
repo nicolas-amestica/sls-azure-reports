@@ -15,7 +15,7 @@ module.exports.getDataFinalReport = async () => {
             return getDataFinances;
 
         /** EXPORTAR DATOS A ARCHIVO CSV EN CARPETA TEMPORAL. */
-        const getExportFile = await DAO.exportToCSV(getDataFinances, process.env.N_PENDIENTES_LIQUIDAR_FILE);        
+        const getExportFile = await DAO.exportToCSV(getDataFinances, process.env.N_SALES_FILE);        
         if (getExportFile.error !== undefined || getExportFile.warn !== undefined)
             return getExportFile;
 

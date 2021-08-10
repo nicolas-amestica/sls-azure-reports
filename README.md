@@ -5,10 +5,12 @@
 - Azure function core tools.
 - Azure CLI.
 
-##### Contiene el siguiente endpoint:
+##### Endpoints:
+El proyecto contiene los siguientes endpoints:
 
-- GenerateQuadrature: Generar la cuadratura con identificador "folio".
-
+###### GenerateQuadrature:
+Generar la cuadratura por el identificador "folio".
+Debe tener conexión a la base de datos de logística.
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
     {
@@ -22,8 +24,9 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
     }
 ```
 
-- GenerateCompleteQuadrature: Generar la cuadratura con identificar "folio" y "CompanieId".
-
+###### GenerateCompleteQuadrature:
+Generar la cuadratura con identificar "folio" y "CompanieId".
+Debe tener conexión a la base de datos de logística.
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
     {
@@ -36,8 +39,9 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
     }
 ```
 
-- FoliosDescuadrados: Generar la cuadratura de folios liquidados de finanzas con folios con estado distinto a delivered de orders. Solo funciona para país Chile.
-
+###### FoliosDescuadrados:
+Generar la cuadratura de folios liquidados de finanzas con folios con estado distinto a delivered de orders. Solo funciona para país Chile.
+Debe tener conexión a la base de datos de finanzas y logística.
 El cuerpo del endpoint debe contener la siguiente estructura raw/json:
 ```sh
     {
@@ -49,11 +53,27 @@ El cuerpo del endpoint debe contener la siguiente estructura raw/json:
     }
 ```
 
-- get_final_pending_liquidation_report: Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
-
+###### get_final_pending_liquidation_report:
+Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
+Debe tener conexión a la base de datos de finanzas.
 ```sh
 El endpoint no contiene body:
 ```
+
+###### get_final_sellers_report:
+Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
+Debe tener conexión a la base de datos de finanzas.
+```sh
+El endpoint no contiene body:
+```
+
+###### get_final_sales_report:
+Generar reporte de los folios existentes en la base de datos de finanzas, estos folios corresponden a pendientes de liquidar.
+Debe tener conexión a la base de datos de finanzas.
+```sh
+El endpoint no contiene body:
+```
+
 #### Todos los endpoint no tienen HEADER (de momento).
 
 # INSTALACIÓN
